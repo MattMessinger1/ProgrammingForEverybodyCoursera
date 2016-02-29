@@ -2,6 +2,9 @@
 
 cel = float(raw_input("Enter Celsius Temp Here:"))
 
-fah = float((cel * 1.8)) + 32
+try: 
+  fah = float((cel * 1.8)) + 32
+  print "Fahrenheit temp:" , fah
 
-print "Fahrenheit temp:" , fah
+except: 
+  "Please enter a number." 
