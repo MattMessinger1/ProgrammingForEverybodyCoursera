@@ -1,0 +1,16 @@
+#Exercise 3.1 Rewrite your pay computation to give the employee 1.5 times the
+#hourly rate for hours worked above 40 hours.
+#Enter Hours: 45 Enter Rate: 10 Pay: 475.0
+
+hours = float(raw_input("Enter number of hours worked:"))
+rate = float(raw_input("Enter rate paid per hour:"))
+
+if hours > 40.0: 
+  overtimehours = hours - 40.0
+  totalpay = (((hours-overtimehours) * rate)) + ((overtimehours * 1.5)*rate)
+  print "Pay:", totalpay
+
+else: 
+  pay = hours * rate
+  print "Pay:", pay
+  
