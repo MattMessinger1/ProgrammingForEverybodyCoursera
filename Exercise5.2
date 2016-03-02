@@ -1,0 +1,30 @@
+#Exercise 5.2 Write another program that prompts for a list of numbers as above 
+# and at the end prints out both the maximum and minimum of the numbers 
+#instead of the average.
+
+maximum = None
+minimum = None
+
+while True: 
+
+	inp = raw_input("Enter number here:")
+
+	if inp == "Done" : break
+	if len(inp) < 1 : break
+
+	try: 
+		num = float(inp)
+	
+	except: 
+		print "Enter a number, please!" 
+		continue
+
+	
+	if maximum is None or num > maximum: 
+			maximum = num
+	print "Maximum:", maximum	
+
+	if minimum is None or num < minimum:
+			minimum = num
+	print "Minimum", minimum
+	
