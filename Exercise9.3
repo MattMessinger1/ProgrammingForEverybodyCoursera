@@ -1,0 +1,26 @@
+# Exercise 9.3 
+# Write a program to read through a mail log, build a histogram 
+# using a dictionary to count how many messages have come from each email address, 
+# and print the dictionary.
+
+
+
+fname = raw_input("Enter file name here:") 
+
+try: 
+	fhandle = open(fname)
+
+except: 
+	print "Please enter a file name!"
+	exit()
+
+counts = dict()
+
+for line in fhandle: 
+	line = line.rstrip()
+	if line == "" : continue
+	words = line.split()
+	if not line.startswith("From ") : continue
+	counts[words[1]] = counts.get(words[1],0) + 1
+	
+print counts

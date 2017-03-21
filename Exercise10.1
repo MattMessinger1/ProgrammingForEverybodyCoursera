@@ -1,0 +1,41 @@
+# access the file: 
+fname = raw_input("Enter file name here:") 
+
+# account for people adding bad file names: 
+
+try: 
+	fhandle = open(fname)
+	
+except: 
+	print "Please enter a valid file name."
+	exit()
+	
+# create an open dictionary to fill
+counts = dict()
+
+#look through each line in the file -- ignoring empty lines and 
+#lines that don't start with From. Also strip the spaces. 
+for line in fhandle: 
+	line = line.rstrip()
+	if line == "" : continue
+#split each line into words
+	words = line.split()
+	if words[0] != "From" : continue
+#drop the address, which will be indexed at 1, into a dictionary
+	counts[words[1]] = counts.get(words[1], 0) + 1
+	
+# create a list
+lst = list()
+
+#append the dictionary items to the list. Lists allow for sorting. Dictionaries don't 
+for key,value in counts.items(): 
+#add the value and key in inverse order so we can sort by value
+	lst.append((value,key))	
+	
+#sort the list in reverse order
+lst.sort(reverse=True)
+
+#print out the address that has been used the most, use index to select it
+for value, key in lst[:1]: 
+	print key, value
+

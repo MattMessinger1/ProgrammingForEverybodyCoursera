@@ -1,0 +1,36 @@
+# collect a proper file name
+fname = raw_input("Enter file name:") 
+
+try: 
+	fhandle = open(fname)
+except: 
+	print "Please enter valid filename." 
+	exit()
+	
+# read through each relevant line in the file
+# parse the data so we pull out the hour an email was sent
+# drop that info into a dictionary to create a histogram
+# sort that dictionary by the keys and print it out one per line
+
+counts = dict()
+
+for line in fhandle: 
+	line = line.rstrip()
+	if line == "" : continue
+	words = line.split()
+	if words[0] != "From" : continue
+# parses the 6th word in the line based on : Then we choose the first one. 
+	hour = words[5].split(":")
+	counts[hour[0]] = counts.get(hour[0],0) + 1
+	
+lst = list()
+
+for key,value in counts.items(): 
+	lst.append((key,value))
+	
+lst.sort()
+
+for key,value in lst: 
+	print key, value
+	
+
